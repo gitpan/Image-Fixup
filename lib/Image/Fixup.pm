@@ -1,4 +1,7 @@
 package Image::Fixup;
+# Copyright (c) 2009 Christopher Davaz. All rights reserved.
+# This program is free software; you can redistribute it and/or
+# modify it under the same terms as Perl itself.
 use strict;
 use warnings;
 use vars qw/$VERSION/;
@@ -9,7 +12,50 @@ use Carp;
 use Image::ExifTool;
 use Image::Magick;
 
-$VERSION = '0.01000';
+$VERSION = '0.01001';
+
+=head1 NAME
+
+Image::Fixup - Provides methods to fixup images.
+
+=head1 SYNOPSIS
+
+# Full script in t/scripts/fix_images
+
+# Read the image
+
+my $image = Image::Fixup->new($file);
+
+# Print out image information
+
+$image->printImageInfo;
+
+# Change image orientation
+
+$image->autoOrient;
+
+# Resize the image
+
+$image->autoResize;
+
+# Write image to disk
+
+$image->writeImage;
+
+# Print out image information again
+
+$image->printImageInfo;
+
+=head1 DESCRIPTION
+
+I needed something that would automatically orient and resize my images. The
+synopsis pretty much says it all.
+
+=head1 TODO
+
+Write documentation for individual methods.
+
+=cut
 
 my %exif2im = (
 	'Horizontal (normal)' => 'top-left',
@@ -122,3 +168,19 @@ sub printImageInfo {
 }
 
 1;
+
+=head1 AUTHOR
+
+Christopher Davaz         www.chrisdavaz.com          cdavaz@gmail.com
+
+=head1 VERSION
+
+Version 0.01001 (Apr 25 2009)
+
+=head1 COPYRIGHT
+
+Copyright (c) 2009 Christopher Davaz. All rights reserved.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+=cut
