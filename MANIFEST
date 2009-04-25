@@ -1,0 +1,6 @@
+Image-Fixup-0.01000.tar.gz
+lib/Image/Fixup.pm
+Makefile.PL
+MANIFEST			This list of files
+t/scripts/fix_images
+META.yml                                 Module meta-data (added by MakeMaker)
