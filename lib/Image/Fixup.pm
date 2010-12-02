@@ -12,7 +12,7 @@ use Carp;
 use Image::ExifTool;
 use Image::Magick;
 
-$VERSION = '0.01001';
+$VERSION = '0.01002';
 
 =head1 NAME
 
@@ -101,6 +101,7 @@ sub _init {
 sub convertOrientation {
 	my $self   = shift;
 	my $orient = shift;
+  return undef unless defined $orient;
 	if (exists $exif2im{$orient}) {
 		return $exif2im{$orient};
 	} elsif (exists $im2exif{$orient}) {
@@ -161,7 +162,7 @@ sub setOrientation {
 sub printImageInfo {
 	my $self = shift;
 	print 'filename: ' . $self->getFilename . "\n";
-	print 'orientation: ' . $self->getOrientation . "\n";
+	print 'orientation: ' . ($self->getOrientation || 'unknown') . "\n";
 	print 'width: ' . $self->getWidth . "\n";
 	print 'height: ' . $self->getHeight . "\n";
 	print 'filesize: ' . $self->getFilesize . "\n";
@@ -175,7 +176,7 @@ Christopher Davaz         www.chrisdavaz.com          cdavaz@gmail.com
 
 =head1 VERSION
 
-Version 0.01001 (Apr 25 2009)
+Version 0.01002 (Apr 25 2009)
 
 =head1 COPYRIGHT
 
